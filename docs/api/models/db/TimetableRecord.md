@@ -11,6 +11,7 @@ Timetable record model.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Id__ | `int` | `true` | - | The identifier of the timetable record |
+| School | [SchoolModel](School.md) | `true` | - | The school associated with this timetable record |
 | Date | `DateTime` | `true` | - | The date of the timetable record |
 | Time | `DateTime` | `true` | - | The time of the timetable record |
 | Active | `bool` | `true` | `false` | The status of the timetable record |

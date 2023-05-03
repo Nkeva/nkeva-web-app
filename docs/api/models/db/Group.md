@@ -11,6 +11,7 @@ Group model.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Code__ | `string` | `true` | - | Group code |
+| School | [SchoolModel](School.md) | `true` | - | Group school |
 | IsSubgroup | `bool` | `false` | `false` | Group is subgroup |
 | Active | `bool` | `false` | `false` | Group active |
 | Curator | [UserModel](User.md) | `true` | - | Group curator |

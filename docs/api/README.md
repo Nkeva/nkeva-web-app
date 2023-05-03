@@ -73,6 +73,10 @@ This is the API for Nkeva. It contains references to controllers, models, and se
 
 - ### Database models
 
+  - [School](/docs/api/models/db/School.md)
+  - [SchoolRole](/docs/api/models/db/SchoolRole.md)
+  - [StaffRole](/docs/api/models/db/StaffRole.md)
+  - [Staff](/docs/api/models/db/Staff.md)
   - [User](/docs/api/models/db/User.md)
   - [Task](/docs/api/models/db/Task.md)
   - [Answer](/docs/api/models/db/Answer.md)
@@ -80,6 +84,7 @@ This is the API for Nkeva. It contains references to controllers, models, and se
   - [Visit](/docs/api/models/db/Visit.md)
   - [Message](/docs/api/models/db/Message.md)
   - [Chat](/docs/api/models/db/Chat.md)
+  - [ChatMember](/docs/api/models/db/ChatMember.md)
   - [File](/docs/api/models/db/File.md)
   - [Comment](/docs/api/models/db/Comment.md)
   - [Course](/docs/api/models/db/Course.md)

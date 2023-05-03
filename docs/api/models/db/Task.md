@@ -11,9 +11,11 @@ Task model
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Id__ | `int` | `true` | - | The identifier of the task |
+| School | [SchoolModel](School.md) | `true` | - | Task school |
+| Course | [CourseModel](Course.md) | `true` | - | Task course |
+| Group | [GroupModel](Group.md) | `true` | - | Task group |
 | Text | `string` | `true` | - | Task text |
 | File | [`FileModel`](File.md) | `false` | `null` | Task file |
-| Group | [GroupModel](Group.md) | `true` | - | Task group |
 | DueDate | `DateTime` | `false` | `null` | Task due date |
 | Active | `bool` | `true` | `false` | Task status |
 | TimetableRecord | [TimetableRecordModel](TimetableRecord.md) | `true` | - | Task timetable record |
