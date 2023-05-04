@@ -1,6 +1,6 @@
-# CourseModel
+# Course model
 
-/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[CourseModel](/docs/api/models/db/Course.md)
+/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[Course](/docs/api/models/db/Course.md)
 
 ## Description
 
@@ -11,7 +11,7 @@ Course model.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Id__ | `int` | `true` | - | The identifier of the course |
-| School | [SchoolModel](School.md) | `true` | - | Course school |
+| School | [School](School.md) | `true` | - | Course school |
 | Name | `string` | `true` | - | Course name |
 | Description | `string` | `true` | - | Course description |
 | CreatedAt | `DateTime` | `false` | Current date | Course created at |
@@ -21,7 +21,6 @@ Course model.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| Tasks | [`TaskModel[]`](Task.md) | Course tasks |
-| Teachers | [`UserModel[]`](User.md) | Course teachers |
-| Students | [`UserModel[]`](User.md) | Course students |
-| Groups | [`GroupModel[]`](Group.md) | Course groups |
+| Tasks | [`Tasks[]`](Tasks.md) | Course tasks |
+| Groups | [`Group[]`](Group.md) | Course groups |
+| TimetableRecords | [`TimetableRecord[]`](TimetableRecord.md) | Course timetable records |

@@ -1,6 +1,6 @@
-# MessageModel
+# Message model
 
-/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[MessageModel](/docs/api/models/db/Message.md)
+/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[Message](/docs/api/models/db/Message.md)
 
 ## Description
 
@@ -11,13 +11,13 @@ Message model.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Id__ | `int` | `true` | - | The identifier of the message |
-| Chat | [ChatModel](Chat.md) | `true` | - | Message chat |
+| Chat | [Chat](Chat.md) | `true` | - | Message chat |
 | Text | `string` | `true` | - | Message text |
-| File | [`FileModel`](File.md) | `false` | `null` | Message file |
-| Writer | [UserModel](User.md) | `true` | - | Message writer |
-| IsСhanged | `bool` | `false` | `false` | Message is edited |
+| File | [`File`](File.md) | `false` | `null` | Message file |
+| Sender | [User](User.md) | `true` | - | Message sender |
+| IsChanged | `bool` | `false` | `false` | Message is edited |
 | IsRead | `bool` | `false` | `false` | Message is read |
-| ReplyTo | [MessageModel](Message.md) | `false` | `null` | Message reply to |
+| ReplyTo | [Message](Message.md) | `false` | `null` | Message reply to |
 | CreatedAt | `DateTime` | `false` | Current date | Message created at |
 | UpdatedAt | `DateTime` | `false` | Current date | Message updated at |
 
@@ -25,4 +25,4 @@ Message model.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| Replies | [`MessageModel[]`](Message.md) | Message replies |
+| Replies | [`Message[]`](Message.md) | Message replies |

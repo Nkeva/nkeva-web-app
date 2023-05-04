@@ -78,9 +78,11 @@ This is the API for Nkeva. It contains references to controllers, models, and se
   - [StaffRole](/docs/api/models/db/StaffRole.md)
   - [Staff](/docs/api/models/db/Staff.md)
   - [User](/docs/api/models/db/User.md)
-  - [Task](/docs/api/models/db/Task.md)
+  - [Tasks](/docs/api/models/db/Tasks.md)
+  - [TaskType](/docs/api/models/db/TaskType.md)
   - [Answer](/docs/api/models/db/Answer.md)
   - [TimetableRecord](/docs/api/models/db/TimetableRecord.md)
+  - [TimetableRecordType](/docs/api/models/db/TimetableRecordType.md)
   - [Visit](/docs/api/models/db/Visit.md)
   - [Message](/docs/api/models/db/Message.md)
   - [Chat](/docs/api/models/db/Chat.md)
@@ -89,6 +91,7 @@ This is the API for Nkeva. It contains references to controllers, models, and se
   - [Comment](/docs/api/models/db/Comment.md)
   - [Course](/docs/api/models/db/Course.md)
   - [Group](/docs/api/models/db/Group.md)
+  - [Meeting](/docs/api/models/db/Meeting.md)
 
 - ### Request models
 

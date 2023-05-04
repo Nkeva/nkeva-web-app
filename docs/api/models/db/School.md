@@ -1,6 +1,6 @@
-# SchoolModel
+# School model
 
-/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[SchoolModel](/docs/api/models/db/School.md)
+/[home](/README.md)/[api](/docs/api/README.md)/[models](/docs/api/README.md#models)/[db](/docs/api/README.md#database-models)/[School](/docs/api/models/db/School.md)
 
 ## Description
 
@@ -26,10 +26,11 @@ School model
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| Users | [`UserModel[]`](User.md) | School users |
-| Courses | [`CourseModel[]`](Course.md) | School courses |
-| Groups | [`GroupModel[]`](Group.md) | School groups |
-| Tasks | [`TaskModel[]`](Task.md) | School tasks |
-| Files | [`FileModel[]`](File.md) | School files |
-| Chats | [`ChatModel[]`](Chat.md) | School chats |
-| TimetableRecords | [`TimetableRecordModel[]`](TimetableRecord.md) | School timetable records |
+| Users | [`User[]`](User.md) | School users |
+| Courses | [`Course[]`](Course.md) | School courses |
+| Groups | [`Group[]`](Group.md) | School groups |
+| Tasks | [`Task[]`](Tasks.md) | School tasks |
+| Files | [`File[]`](File.md) | School files |
+| Chats | [`Chat[]`](Chat.md) | School chats |
+| Answers | [`Answer[]`](Answer.md) | School answers |
+| TimetableRecords | [`TimetableRecord[]`](TimetableRecord.md) | School timetable records |

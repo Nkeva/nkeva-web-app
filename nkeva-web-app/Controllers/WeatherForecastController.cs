@@ -6,6 +6,7 @@ namespace nkeva_web_app.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private DbApp db;
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -13,14 +14,16 @@ namespace nkeva_web_app.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, DbApp db)
         {
             _logger = logger;
+            this.db = db;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var staff = db.Staff.ToList();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

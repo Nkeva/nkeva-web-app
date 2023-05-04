@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using nkeva_web_app;
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var db = "Server=(localdb)\\mssqllocaldb;Database=SchoolPlatform;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+builder.Services.AddDbContext<DbApp>(options =>
+    options.UseSqlServer(db));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
