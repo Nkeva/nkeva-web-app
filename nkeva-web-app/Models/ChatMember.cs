@@ -4,7 +4,9 @@ namespace nkeva_web_app.Models
 {
     public class ChatMember
     {
+        [Key]
         public int ChatId { get; set; }
+        [Key]
         public int UserId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

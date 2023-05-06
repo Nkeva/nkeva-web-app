@@ -1,11 +1,19 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class File
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int SchoolId { get; set; }
+        [Required]
+        [StringLength(255, MinimumLength = 1)]
         public string Name { get; set; }
+        [Required]
         public long Size { get; set; }
+        [Required]
         public int OwnerId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

@@ -1,6 +1,6 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using nkeva_web_app;
-using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +11,14 @@ var db = "Server=(localdb)\\mssqllocaldb;Database=SchoolPlatform;Trusted_Connect
 builder.Services.AddDbContext<DbApp>(options =>
     options.UseSqlServer(db));
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+        options.AccessDeniedPath = "/AccessDenied";
+    });
 
 var app = builder.Build();
 
@@ -25,6 +33,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

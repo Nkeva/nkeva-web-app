@@ -1,13 +1,21 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Answer
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int SchoolId { get; set; }
+        [Required]
+        [StringLength(10240)]
         public string Text { get; set; }
-        public int? FileId { get; set; }
-        public int? Mark { get; set; }
+        public int? FileId { get; set; } = null;
+        public int? Mark { get; set; } = null;
+        [Required]
         public int TaskId { get; set; }
+        [Required]
         public int StudentId { get; set; }
         public DateTime? CheckDate { get; set; } = null;
         public DateTime CreatedAt { get; set; } = DateTime.Now;

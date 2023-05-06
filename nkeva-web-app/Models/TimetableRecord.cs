@@ -1,19 +1,29 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class TimetableRecord
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int SchoolId { get; set; }
+        [Required]
         public int CourseId { get; set; }
+        [Required]
         public int GroupId { get; set; }
+        [Required]
         public int TeacherId { get; set; }
-        public int? MeetingId { get; set; }
+        public int? MeetingId { get; set; } = null;
+        [Required]
         public int TypeId { get; set; }
+        [Required]
         public DateTime StartAt { get; set; }
         public bool Active { get; set; } = false;
+        [StringLength(255, MinimumLength = 0)]
         public string Room { get; set; }
         public int ExrtaPoints { get; set; } = 5;
-        public string? Description { get; set; }
+        public string? Description { get; set; } = null;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 

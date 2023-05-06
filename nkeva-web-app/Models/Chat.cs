@@ -1,11 +1,19 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Chat
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [StringLength(255)]
         public string Name { get; set; }
+        [Required]
         public int SchoolId { get; set; }
-        public string? Description { get; set; }
+        [StringLength(255)]
+        public string? Description { get; set; } = null;
+        [Required]
         public int OwnerId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

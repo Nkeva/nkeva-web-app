@@ -315,6 +315,10 @@ namespace nkeva_web_app
                 .HasForeignKey(u => u.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Login)
+                .IsUnique();
+
             #endregion
 
             #region Staff
@@ -324,6 +328,22 @@ namespace nkeva_web_app
                 .WithMany(sr => sr.Staff)
                 .HasForeignKey(s => s.StaffRoleId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            #endregion
+
+            #region School Roles
+
+            modelBuilder.Entity<SchoolRole>()
+                .HasIndex(sr => sr.Name)
+                .IsUnique();
+
+            #endregion
+
+            #region Staff Roles
+
+            modelBuilder.Entity<StaffRole>()
+                .HasIndex(sr => sr.Name)
+                .IsUnique();
 
             #endregion
         }

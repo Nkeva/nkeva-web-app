@@ -1,15 +1,25 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Tasks
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int SchoolId { get; set; }
+        [Required]
         public int CourseId { get; set; }
+        [Required]
         public int GroupId { get; set; }
+        [Required]
         public int TaskTypeId { get; set; }
+        [Required]
         public int TimetableRecordId { get; set; }
+        [Required]
+        [StringLength(255, MinimumLength = 1)]
         public string Text { get; set; }
-        public int? FileId { get; set; }
+        public int? FileId { get; set; } = null;
         public DateTime? Deadline { get; set; } = null;
         public bool Active { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;

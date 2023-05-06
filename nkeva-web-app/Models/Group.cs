@@ -1,11 +1,17 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Group
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int SchoolId { get; set; }
         public bool IsSubGroup { get; set; } = false;
         public bool Active { get; set; } = false;
+        [Required]
+        [StringLength(255, MinimumLength = 1)]
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

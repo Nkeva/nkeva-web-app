@@ -1,4 +1,6 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Visit
     {
@@ -9,12 +11,18 @@
             Late = 20
         }
 
+        [Key]
         public int Id { get; set; }
+        [Required]
         public VisitType Type { get; set; }
+        [Required]
         public int Points { get; set; }
-        public int? Mark { get; set; }
-        public string? Comment { get; set; }
+        public int? Mark { get; set; } = null;
+        [StringLength(512)]
+        public string? Comment { get; set; } = null;
+        [Required]
         public int StudentId { get; set; }
+        [Required]
         public int TimetableRecordId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

@@ -1,15 +1,22 @@
-﻿namespace nkeva_web_app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace nkeva_web_app.Models
 {
     public class Message
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int ChatId { get; set; }
+        [Required]
         public int SenderId { get; set; }
+        [Required]
+        [StringLength(2048)]
         public string Text { get; set; }
-        public int? FileId { get; set; }
+        public int? FileId { get; set; } = null;
         public bool IsChanged { get; set; } = false;
         public bool IsRead { get; set; } = false;
-        public int? ReplyToId { get; set; }
+        public int? ReplyToId { get; set; } = null;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 

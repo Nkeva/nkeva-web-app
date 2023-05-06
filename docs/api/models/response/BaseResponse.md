@@ -13,6 +13,7 @@ Base response model. Contains only status code and message.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | status | `int` | `true` | `200` | HTTP status code |
+| success | `bool` | `false` | `true` | Is request successful |
 | message | `string` | `false` | `"OK"` | Response message |
 | data | `object` | `false` | `null` | Response data |
 
