@@ -6,6 +6,8 @@
 
 SchoolRole model.
 
+## Implements [IRole](/nkeva-web-app/Models/Interfaces/IRole.cs)
+
 ## Fields
 
 | Name | Type | Required | Default | Description |

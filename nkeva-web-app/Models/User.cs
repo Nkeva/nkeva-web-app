@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using nkeva_web_app.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace nkeva_web_app.Models
 {
-    public class User
+    public class User : IUser
     {
         [Key]
         public int Id { get; set; }
@@ -18,17 +19,21 @@ namespace nkeva_web_app.Models
         [StringLength(128, MinimumLength = 1)]
         public string LastName { get; set; }
         [StringLength(128)]
-        public string? Surname { get; set; } = null;
+        public string? MiddleName { get; set; } = null;
+        [Required]
         [EmailAddress]
-        public string? Email { get; set; } = null;
+        public string Email { get; set; }
         [Required]
         [StringLength(32)]
         public string Login { get; set; }
         [Required]
         [StringLength(512, MinimumLength = 8)]
         public string Password { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
+        [Required]
         [Phone]
-        public string? Phone { get; set; } = null;
+        public string PhoneNumber { get; set; }
         public bool IsOnline { get; set; } = false;
         public bool IsBlocked { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -36,6 +41,7 @@ namespace nkeva_web_app.Models
 
         public virtual School School { get; set; }
         public virtual SchoolRole Role { get; set; }
+        public IRole UserRole => Role;
 
         public virtual ICollection<Group> Groups { get; set; } = new List<Group>();
         public virtual ICollection<Chat> Chats { get; set; } = new List<Chat>();
@@ -47,10 +53,5 @@ namespace nkeva_web_app.Models
         public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public virtual ICollection<Meeting> Meetings { get; set; } = new List<Meeting>();
-
-        public string GetFullName()
-        {
-            return $"{FirstName} {LastName}{(Surname == null ? "" : $" {Surname}")}";
-        }
     }
 }

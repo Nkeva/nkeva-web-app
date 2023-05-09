@@ -6,22 +6,24 @@
 
 User model.
 
+## Implements [IUser](/nkeva-web-app/Models/Interfaces/IUser.cs) interface
+
 ## Fields
 
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | __Id__ | `int` | `true` | - | User id |
-| School | [`School`](School.md) | `false` | - | User school |
+| School | [`School`](School.md) | `true` | - | User school |
 | FirstName | `string` | `true` | - | User first name |
 | LastName | `string` | `true` | - | User last name |
-| Surname | `string` | `false` | - | User surname |
+| MiddleName | `string` | `false` | - | User middle name |
 | Login | `string` | `true` | - | User login |
-| Email | `string` | `false` | `null` | User email |
-| Phone | `string` | `false` | `null` | User phone |
+| Email | `string` | `true` | - | User email |
+| PhoneNumber | `string` | `true` | - | User phone number |
 | Password | `string` | `true` | - | User password |
 | Role | [`SchoolRole`](SchoolRole.md) | `true` | - | User role |
-| IsOnline | `bool` | `true` | `false` | User online |
-| IsBlocked | `bool` | `true` | `false` | User blocked |
+| IsOnline | `bool` | `false` | `false` | User online |
+| IsBlocked | `bool` | `false` | `false` | User blocked |
 | CreatedAt | `DateTime` | `false` | Current date | User created at |
 | UpdatedAt | `DateTime` | `false` | Current date | User updated at |
 

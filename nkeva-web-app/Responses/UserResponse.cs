@@ -1,11 +1,12 @@
-﻿using System.Security.Claims;
+﻿using nkeva_web_app.Models.Interfaces;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 
 namespace nkeva_web_app.Responses
 {
     public class UserResponse : BaseResponse
     {
-        public UserResponse(bool success, string? message, User? data) : base(success, message, data)
+        public UserResponse(bool success, string? message, IUser? data) : base(success, message, data != null ? new User(data) : null)
         {
         }
 
@@ -26,9 +27,9 @@ namespace nkeva_web_app.Responses
             public string Role { get; set; }
             [JsonPropertyName("school")]
             public int School { get; set; }
-            [JsonPropertyName("first_name")]
+            [JsonPropertyName("firstName")]
             public string FirstName { get; set; }
-            [JsonPropertyName("last_name")]
+            [JsonPropertyName("lastName")]
             public string LastName { get; set; }
             [JsonPropertyName("surname")]
             public string? Surname { get; set; } = null;
@@ -36,36 +37,30 @@ namespace nkeva_web_app.Responses
             public string? Email { get; set; } = null;
             [JsonPropertyName("phone")]
             public string? Phone { get; set; } = null;
-            [JsonPropertyName("is_online")]
+            [JsonPropertyName("isOnline")]
             public bool IsOnline { get; set; } = false;
-            [JsonPropertyName("is_blocked")]
+            [JsonPropertyName("isBlocked")]
             public bool IsBlocked { get; set; } = false;
-            [JsonPropertyName("created_at")]
+            [JsonPropertyName("createdAt")]
             public DateTime CreatedAt { get; set; } = DateTime.Now;
-            [JsonPropertyName("updated_at")]
+            [JsonPropertyName("updatedAt")]
             public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-            public static implicit operator UserResponse.User(Models.User user)
+            public User(Models.Interfaces.IUser user)
             {
-                return new UserResponse.User
-                {
-                    Id = user.Id,
-                    Login = user.Login,
-                    Role = user.Role.Name,
-                    School = user.SchoolId,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Surname = user.Surname,
-                    Email = user.Email,
-                    Phone = user.Phone,
-                    IsOnline = user.IsOnline,
-                    IsBlocked = user.IsBlocked,
-                    CreatedAt = user.CreatedAt,
-                    UpdatedAt = user.UpdatedAt
-                };
+                Id = user.Id;
+                Login = user.Login;
+                Role = user.UserRole.Name;
+                FirstName = user.FirstName;
+                LastName = user.LastName;
+                Surname = user.MiddleName;
+                Email = user.Email;
+                Phone = user.PhoneNumber;
+                IsOnline = user.IsOnline;
+                IsBlocked = user.IsBlocked;
+                CreatedAt = user.CreatedAt;
+                UpdatedAt = user.UpdatedAt;
             }
-
-            
         }
     }
 }

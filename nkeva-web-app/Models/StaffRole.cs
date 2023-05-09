@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using nkeva_web_app.Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace nkeva_web_app.Models
 {
-    public class StaffRole
+    public class StaffRole : Interfaces.IRole
     {
         [Key]
         public int Id { get; set; }

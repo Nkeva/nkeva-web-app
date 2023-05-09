@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+
 using nkeva_web_app;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/AccessDenied";
     });
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { 
+        Title = "NKEVA - School Platform",
+        Version = "v1",
+        TermsOfService = new Uri("https://github.com/Nkeva"),
+    });
+});
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,6 +50,9 @@ app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapFallbackToFile("index.html"); ;
 

@@ -12,8 +12,8 @@ List response model. Contains only status code, message and list of items.
 
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
-| status | `int` | `true` | `200` | HTTP status code |
-| message | `string` | `false` | `"OK"` | Response message |
+| success | `bool` | `false` | `true` | Is request successful |
+| message | `string` | `false` | `null` | Response message |
 | data | `T[]` | `false` | `[]` | Response data |
 
 ## Example

@@ -8,6 +8,7 @@ namespace nkeva_web_app
         public DbApp(DbContextOptions<DbApp> options) : base(options)
         {
             Database.EnsureCreated();
+            Tools.InitSystem.Init(this);
         }
 
         // Tables for staff
@@ -324,9 +325,9 @@ namespace nkeva_web_app
             #region Staff
 
             modelBuilder.Entity<Staff>()
-                .HasOne(s => s.StaffRole)
+                .HasOne(s => s.Role)
                 .WithMany(sr => sr.Staff)
-                .HasForeignKey(s => s.StaffRoleId)
+                .HasForeignKey(s => s.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             #endregion
