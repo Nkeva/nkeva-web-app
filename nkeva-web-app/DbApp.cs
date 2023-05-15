@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Models;
+using nkeva_web_app.Models.Anime;
+using nkeva_web_app.Models.Enums;
 
 namespace nkeva_web_app
 {
@@ -36,8 +38,20 @@ namespace nkeva_web_app
         public DbSet<ChatMember> ChatMembers { get; set; }
         public DbSet<Message> Messages { get; set; }
 
+        // Tables for anime
+        public DbSet<Anime> Animes { get; set; }
+        public DbSet<AnimeGenre> AnimeGenres { get; set; }
+        public DbSet<AnimeFormat> AnimeFormats { get; set; }
+        public DbSet<AnimeActor> AnimeActors { get; set; }
+        public DbSet<AnimePersonage> AnimePersonages { get; set; }
+        public DbSet<UserAnime> UserAnimes { get; set; }
+        public DbSet<AnimeComment> AnimeComments { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            #region School
 
             #region ChatMember
 
@@ -322,6 +336,8 @@ namespace nkeva_web_app
 
             #endregion
 
+            #endregion
+
             #region Staff
 
             modelBuilder.Entity<Staff>()
@@ -345,6 +361,58 @@ namespace nkeva_web_app
             modelBuilder.Entity<StaffRole>()
                 .HasIndex(sr => sr.Name)
                 .IsUnique();
+
+            #endregion
+
+            #region Anime
+
+            modelBuilder.Entity<Anime>()
+                .HasOne(a => a.Genre)
+                .WithMany(g => g.Animes)
+                .HasForeignKey(a => a.GenreId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Anime>()
+                .HasOne(a => a.Format)
+                .WithMany(s => s.Animes)
+                .HasForeignKey(a => a.FormatId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimePersonage>()
+                .HasOne(ap => ap.Anime)
+                .WithMany(a => a.Personages)
+                .HasForeignKey(ap => ap.AnimeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimePersonage>()
+                .HasOne(ap => ap.Actor)
+                .WithMany(a => a.Personages)
+                .HasForeignKey(ap => ap.ActorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimeComment>()
+                .HasOne(ac => ac.Anime)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(ac => ac.AnimeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimeComment>()
+                .HasOne(ac => ac.Writer)
+                .WithMany(u => u.AnimeComments)
+                .HasForeignKey(ac => ac.WriterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<UserAnime>()
+                .HasOne(ua => ua.Anime)
+                .WithMany(a => a.UserAnimes)
+                .HasForeignKey(ua => ua.AnimeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<UserAnime>()
+                .HasOne(ua => ua.User)
+                .WithMany(u => u.Animes)
+                .HasForeignKey(ua => ua.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             #endregion
         }

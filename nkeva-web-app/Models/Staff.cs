@@ -17,7 +17,7 @@ namespace nkeva_web_app.Models
         [Phone]
         public string PhoneNumber { get; set; }
         [Required]
-        [StringLength(512, MinimumLength = 8)]
+        [StringLength(2048, MinimumLength = 8)]
         public string Password { get; set; }
         [Required]
         public byte[] PasswordSalt { get; set; }

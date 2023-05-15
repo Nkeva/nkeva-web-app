@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Models;
+using nkeva_web_app.Models.Anime;
 
 namespace nkeva_web_app.Tools
 {
@@ -22,15 +23,20 @@ namespace nkeva_web_app.Tools
 
         private static void InitDatabase(DbApp db)
         {
-            db.StaffRoles.AddRange(new List<StaffRole>
+            if (db.StaffRoles.Count() == 0)
             {
-                new StaffRole() {Name = "Admin"},
-                new StaffRole() {Name = "Developer"},
-                new StaffRole() {Name = "Manager"},
-                new StaffRole() {Name = "Accountant"},
-                new StaffRole() {Name = "Support"}
-            });
+                db.StaffRoles.AddRange(new List<StaffRole>
+                {
+                    new StaffRole() {Name = "Admin"},
+                    new StaffRole() {Name = "Developer"},
+                    new StaffRole() {Name = "Manager"},
+                    new StaffRole() {Name = "Accountant"},
+                    new StaffRole() {Name = "Support"}
+                });
+            }
+            db.SaveChanges();
             string hash = PasswordTool.HashPasword("admin", out byte[] salt);
+            var admin = db.StaffRoles.Single(p => p.Name == "Admin");
             db.Staff.Add(new Staff()
             {
                 Login = "admin",
@@ -39,7 +45,8 @@ namespace nkeva_web_app.Tools
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
                 IsBlocked = false,
-                RoleId = db.StaffRoles.Single(p => p.Name == "Admin").Id,
+                Role = admin,
+                RoleId = admin.Id,
                 LastName = "Sys",
                 FirstName = "Admin",
                 PhoneNumber = "1234567890",
@@ -54,6 +61,24 @@ namespace nkeva_web_app.Tools
                 new SchoolRole() {Name = "Student"},
                 new SchoolRole() {Name = "Parent"}
             });
+
+
+            db.AnimeFormats.AddRange(new List<AnimeFormat>()
+            {
+                new AnimeFormat() {Name = "TV"},
+                new AnimeFormat() {Name = "TV Short"},
+                new AnimeFormat() {Name = "Movie"},
+                new AnimeFormat() {Name = "Music"}
+            });
+
+            db.AnimeGenres.AddRange(new List<AnimeGenre>
+            {
+                new AnimeGenre(){Name = "Action"},
+                new AnimeGenre(){Name = "Adventure"},
+                new AnimeGenre(){Name = "Comedy"},
+                new AnimeGenre(){Name = "Drama"}
+            });
+
             db.SaveChanges();
         }
     }

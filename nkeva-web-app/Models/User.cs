@@ -27,7 +27,7 @@ namespace nkeva_web_app.Models
         [StringLength(32)]
         public string Login { get; set; }
         [Required]
-        [StringLength(512, MinimumLength = 8)]
+        [StringLength(2048, MinimumLength = 8)]
         public string Password { get; set; }
         [Required]
         public byte[] PasswordSalt { get; set; }
@@ -53,5 +53,7 @@ namespace nkeva_web_app.Models
         public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public virtual ICollection<Meeting> Meetings { get; set; } = new List<Meeting>();
+        public virtual ICollection<Anime.AnimeComment> AnimeComments { get; set; } = new List<Anime.AnimeComment>();
+        public virtual ICollection<Anime.UserAnime> Animes { get; set; } = new List<Anime.UserAnime>();
     }
 }
