@@ -55,11 +55,11 @@ namespace nkeva_web_app.Tools
 
             db.UsersSchoolRoles.AddRange(new List<SchoolRole>()
             {
-                new SchoolRole() {Name = "Admin"},
-                new SchoolRole() {Name = "HeadTeacher"},
-                new SchoolRole() {Name = "Teacher"},
-                new SchoolRole() {Name = "Student"},
-                new SchoolRole() {Name = "Parent"}
+                new SchoolRole() {Id = 0, Name = "Admin"},
+                new SchoolRole() {Id = 1, Name = "HeadTeacher"},
+                new SchoolRole() {Id = 2, Name = "Teacher"},
+                new SchoolRole() {Id = 3, Name = "Student"},
+                new SchoolRole() {Id = 4, Name = "Parent"}
             });
 
 

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 using nkeva_web_app;
+using nkeva_web_app.Attributes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,25 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IAuthorizationHandler, OnlyStaffHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, SchoolRoleHandler>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("OnlyStaff", policy =>
+        policy.Requirements.Add(new OnlyStaffRequirement()));
+    options.AddPolicy("SchoolRole_HeadTeacher", policy =>
+        policy.Requirements.Add(new SchoolRoleRequirement("HeadTeacher")));
+    options.AddPolicy("SchoolRole_Teacher", policy =>
+        policy.Requirements.Add(new SchoolRoleRequirement("Teacher")));
+    options.AddPolicy("SchoolRole_Student", policy =>
+        policy.Requirements.Add(new SchoolRoleRequirement("Student")));
+    options.AddPolicy("SchoolRole_Parent", policy =>
+        policy.Requirements.Add(new SchoolRoleRequirement("Parent")));
+    options.AddPolicy("SchoolRole_Admin", policy =>
+        policy.Requirements.Add(new SchoolRoleRequirement("Admin")));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,6 +67,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

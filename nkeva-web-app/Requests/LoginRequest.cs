@@ -8,7 +8,7 @@ namespace nkeva_web_app.Requests
         [StringLength(32, MinimumLength = 1)]
         public string Login { get; set; }
         [Required]
-        [StringLength(512, MinimumLength = 8)]
+        [StringLength(512, MinimumLength = 4)]
         public string Password { get; set; }
     }
 }

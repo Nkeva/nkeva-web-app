@@ -46,7 +46,7 @@ namespace nkeva_web_app.Responses
             [JsonPropertyName("updatedAt")]
             public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-            public User(Models.Interfaces.IUser user)
+            public User(IUser user)
             {
                 Id = user.Id;
                 Login = user.Login;

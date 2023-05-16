@@ -20,7 +20,7 @@ namespace nkeva_web_app.Tools
             return Convert.ToHexString(hash);
         }
 
-        bool VerifyPassword(string password, string hash, byte[] salt)
+        public static bool VerifyPassword(string password, string hash, byte[] salt)
         {
             var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, HashAlgorithmName.SHA512, keySize);
             return hashToCompare.SequenceEqual(Convert.FromHexString(hash));

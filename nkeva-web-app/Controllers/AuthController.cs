@@ -10,9 +10,11 @@ using nkeva_web_app.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Models.Interfaces;
 using nkeva_web_app.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace nkeva_web_app.Controllers
 {
+
     [Route("api/auth")]
     [ApiController]
     public class AuthController : BaseController
@@ -27,15 +29,16 @@ namespace nkeva_web_app.Controllers
             List<Claim> claims = new List<Claim>();
             UserType type = UserType.Staff;
             // try to find user in school users
-            IUser? user = await DB.Users.FirstOrDefaultAsync(x => x.Login == request.Login && x.Password == request.Password);
+            IUser? user = await DB.Users.Include(x => x.Role).FirstOrDefaultAsync(x => x.Login == request.Login);
 
             if (user == null)
             {
+
                 // try to find user in staff
-                user = await DB.Staff.FirstOrDefaultAsync(x => x.Login == request.Login && x.Password == request.Password);
+                user = await DB.Staff.Include(x => x.Role).FirstOrDefaultAsync(x => x.Login == request.Login);
 
                 // if user not found
-                if(user == null)
+                if(user == null || !Tools.PasswordTool.VerifyPassword(request.Password, user.Password, user.PasswordSalt))
                 {
                     return Unauthorized(new UserResponse(false, "Invalid login or password"));
                 }
@@ -44,6 +47,10 @@ namespace nkeva_web_app.Controllers
             }
             else
             {
+                if (!Tools.PasswordTool.VerifyPassword(request.Password, user.Password, user.PasswordSalt))
+                {
+                    return Unauthorized(new UserResponse(false, "Invalid login or password"));
+                }
                 // if user found, set type to school
                 type = UserType.School;
             }
