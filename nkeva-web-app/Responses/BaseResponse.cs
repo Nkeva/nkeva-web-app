@@ -17,5 +17,19 @@ namespace nkeva_web_app.Responses
             Message = message;
             Data = data;
         }
+
+        public class SuccessResponse : BaseResponse
+        {
+            public SuccessResponse(string? message, object? data) : base(true, message, data)
+            {
+            }
+        }
+
+        public class ErrorResponse : BaseResponse
+        {
+            public ErrorResponse(string? message, object? data) : base(false, message, data)
+            {
+            }
+        }
     }
 }
