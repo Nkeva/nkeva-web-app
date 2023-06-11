@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using nkeva_web_app.Models.Anime;
 using nkeva_web_app.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
@@ -55,5 +55,6 @@ namespace nkeva_web_app.Models
         public virtual ICollection<Meeting> Meetings { get; set; } = new List<Meeting>();
         public virtual ICollection<Anime.AnimeComment> AnimeComments { get; set; } = new List<Anime.AnimeComment>();
         public virtual ICollection<Anime.UserAnime> Animes { get; set; } = new List<Anime.UserAnime>();
+        public virtual ICollection<AnimeCommentReaction> Reactions { get; set; } = new List<AnimeCommentReaction>();
     }
 }

@@ -1,9 +1,10 @@
 ﻿using nkeva_web_app.Models.Enums;
+using nkeva_web_app.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace nkeva_web_app.Models.Anime
 {
-    public class AnimePersonage
+    public class AnimePersonage : IAnimePersonage
     { 
 
         [Key]

@@ -1,30 +1,26 @@
 ﻿using nkeva_web_app.Models.Enums;
-using nkeva_web_app.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace nkeva_web_app.Models.Anime
+namespace nkeva_web_app.Requests
 {
-    public class UserAnime : IUserAnime
+    public class PutUserAnimeRequest
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public int AnimeId { get; set; }
-        [Required]
-        public int UserId { get; set; }
-        public int Rating { get; set; }
         [Required]
         public bool IsFavorite { get; set; }
         [Required]
         public AnimeWatchingState State { get; set; }
+        [Required]
+        public int Rating { get; set; }
+        [Required]
         public DateTime StartDate { get; set; } = DateTime.Now;
+        [Required]
         public DateTime EndDate { get; set; }
+        [Required]
         public int Rewatches { get; set; } = 0;
+        [Required]
         public int EpisodesWatched { get; set; } = 0;
-        [MaxLength(2048), MinLength(0)]
+        [Required]
+        [StringLength(2048, MinimumLength = 0)]
         public string Notes { get; set; } = "";
-
-        public Anime Anime { get; set; }
-        public User User { get; set; }
     }
 }
