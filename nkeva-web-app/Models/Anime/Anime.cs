@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using nkeva_web_app.Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace nkeva_web_app.Models.Anime
 {
-    public class Anime
+    public class Anime : IAnime
     {
         [Key]
         public int Id { get; set; }
@@ -29,6 +30,6 @@ namespace nkeva_web_app.Models.Anime
 
         public virtual ICollection<AnimePersonage> Personages { get; set; } = new List<AnimePersonage>();
         public virtual ICollection<AnimeComment> Comments { get; set; } = new List<AnimeComment>();
-        public virtual ICollection<UserAnime> UserAnimes { get; set;} = new List<UserAnime>();
+        public virtual ICollection<UserAnime> UserAnimes { get; set; } = new List<UserAnime>();
     }
 }

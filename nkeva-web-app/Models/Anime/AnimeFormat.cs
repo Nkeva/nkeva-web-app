@@ -6,6 +6,7 @@ namespace nkeva_web_app.Models.Anime
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<Anime> Animes { get; set; } = new List<Anime>();

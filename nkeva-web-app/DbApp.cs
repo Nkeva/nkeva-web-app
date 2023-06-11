@@ -46,6 +46,7 @@ namespace nkeva_web_app
         public DbSet<AnimePersonage> AnimePersonages { get; set; }
         public DbSet<UserAnime> UserAnimes { get; set; }
         public DbSet<AnimeComment> AnimeComments { get; set; }
+        public DbSet<AnimeCommentReaction> AnimeCommentReactions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -412,6 +413,21 @@ namespace nkeva_web_app
                 .HasOne(ua => ua.User)
                 .WithMany(u => u.Animes)
                 .HasForeignKey(ua => ua.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimeCommentReaction>()
+                .HasKey(c => new { c.UserId, c.CommentId });
+
+            modelBuilder.Entity<AnimeCommentReaction>()
+                .HasOne(acr => acr.User)
+                .WithMany(ac => ac.Reactions)
+                .HasForeignKey(acr => acr.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AnimeCommentReaction>()
+                .HasOne(acr => acr.Comment)
+                .WithMany(c => c.Reactions)
+                .HasForeignKey(acr => acr.CommentId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             #endregion
