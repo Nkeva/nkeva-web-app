@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using nkeva_web_app.Models.Interfaces;
 
 namespace nkeva_web_app.Models
 {
-    public class Message
+    public class Message : IMessage
     {
         [Key]
         public int Id { get; set; }

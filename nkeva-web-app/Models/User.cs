@@ -53,8 +53,8 @@ namespace nkeva_web_app.Models
         public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public virtual ICollection<Meeting> Meetings { get; set; } = new List<Meeting>();
-        public virtual ICollection<Anime.AnimeComment> AnimeComments { get; set; } = new List<Anime.AnimeComment>();
-        public virtual ICollection<Anime.UserAnime> Animes { get; set; } = new List<Anime.UserAnime>();
+        public virtual ICollection<AnimeComment> AnimeComments { get; set; } = new List<AnimeComment>();
+        public virtual ICollection<UserAnime> Animes { get; set; } = new List<UserAnime>();
         public virtual ICollection<AnimeCommentReaction> Reactions { get; set; } = new List<AnimeCommentReaction>();
     }
 }

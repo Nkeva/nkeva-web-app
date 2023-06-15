@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace nkeva_web_app.Models
 {
-    public class SchoolRole : Interfaces.IRole
+    public class SchoolRole : IRole
     {
         [Key]
         public int Id { get; set; }

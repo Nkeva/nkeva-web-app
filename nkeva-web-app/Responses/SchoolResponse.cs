@@ -2,21 +2,21 @@
 
 namespace nkeva_web_app.Responses
 {
-    public class SchoolResponce : BaseResponse
+    public class SchoolResponse : BaseResponse
     {
-        public SchoolResponce(bool success, string? message, Model? data) : base(success, message, data)
+        public SchoolResponse(bool success, string? message, Model? data) : base(success, message, data)
         {
         }
 
-        public SchoolResponce(bool success, string? message) : base(success, message, null)
+        public SchoolResponse(bool success, string? message) : base(success, message, null)
         {
         }
 
-        public SchoolResponce(bool success, Model? data) : base(success, null, data)
+        public SchoolResponse(bool success, Model? data) : base(success, null, data)
         {
         }
 
-        public SchoolResponce(Model? data) : base(true, null, data)
+        public SchoolResponse(Model? data) : base(true, null, data)
         {
         }
 

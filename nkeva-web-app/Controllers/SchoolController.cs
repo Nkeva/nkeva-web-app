@@ -51,7 +51,7 @@ namespace nkeva_web_app.Controllers
 
                 await DB.SaveChangesAsync();
 
-                return Ok(new SchoolResponce(result.Entity));
+                return Ok(new SchoolResponse(result.Entity));
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace nkeva_web_app.Controllers
             try
             {
                 var result = await DB.School.ToListAsync();
-                return Ok(result.Select(x => new SchoolResponce(x)));
+                return Ok(result.Select(x => new SchoolResponse(x)));
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace nkeva_web_app.Controllers
 
                 await DB.SaveChangesAsync();
 
-                return Ok(new SchoolResponce(school));
+                return Ok(new SchoolResponse(school));
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace nkeva_web_app.Controllers
             DB.School.Remove(school);
             await DB.SaveChangesAsync();
 
-            return Ok(new SchoolResponce(school));
+            return Ok(new SchoolResponse(school));
         }
 
     }

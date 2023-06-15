@@ -173,6 +173,19 @@ namespace nkeva_web_app.Controllers
             return Ok(new ListResponse<AnimeGenre>(true, null, list));
         }
 
+        [HttpGet("genres/{genreID}")]
+        public async Task<IActionResult> GetAnimeGenre(int genreID)
+        {
+            AnimeGenre? genre = await DB.AnimeGenres.SingleOrDefaultAsync(p => p.Id == genreID);
+
+            if (genre == null)
+            {
+                return NotFound(new BaseResponse.ErrorResponse("Invalid genre id!", null));
+            }
+
+            return Ok(new BaseResponse.SuccessResponse(null, genre));
+        }
+
         // anime formats
 
         [HttpGet("formats")]
@@ -183,6 +196,19 @@ namespace nkeva_web_app.Controllers
                 .ToListAsync();
 
             return Ok(new ListResponse<AnimeFormat>(true, null, list));
+        }
+
+        [HttpGet("formats/{formatID}")]
+        public async Task<IActionResult> GetAnimeFormat(int formatID)
+        {
+            AnimeFormat? format = await DB.AnimeFormats.SingleOrDefaultAsync(p => p.Id == formatID);
+
+            if (format == null)
+            {
+                return NotFound(new BaseResponse.ErrorResponse("Invalid format id!", null));
+            }
+
+            return Ok(new BaseResponse.SuccessResponse(null, format));
         }
 
         // anime personages
@@ -289,8 +315,6 @@ namespace nkeva_web_app.Controllers
 
             comment.Comment = newText;
 
-            DB.AnimeComments.Update(comment);
-
             await DB.SaveChangesAsync();
 
             return Ok(new AnimeCommentResponse(true, null, comment));
@@ -335,7 +359,6 @@ namespace nkeva_web_app.Controllers
             else
             {
                 reaction.Liked = like;
-                DB.AnimeCommentReactions.Update(reaction);
             }
 
             await DB.SaveChangesAsync();
