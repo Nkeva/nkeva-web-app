@@ -6,6 +6,7 @@ using nkeva_web_app.Models;
 using nkeva_web_app.Models.Anime;
 using nkeva_web_app.Requests;
 using nkeva_web_app.Responses;
+using nkeva_web_app.Services;
 
 namespace nkeva_web_app.Controllers
 {
@@ -14,8 +15,11 @@ namespace nkeva_web_app.Controllers
     [ApiController]
     public class AnimeController : BaseController
     {
-        public AnimeController(DbApp context) : base(context)
+        private readonly IFileStorageService fileStorage;
+
+        public AnimeController(DbApp context, IFileStorageService fileStorage) : base(context)
         {
+            this.fileStorage = fileStorage;
         }
 
         // animes
@@ -59,6 +63,9 @@ namespace nkeva_web_app.Controllers
                 })).Entity;
 
                 await DB.SaveChangesAsync();
+
+                (await fileStorage.UploadFileAsync(titleImageFile.Entity, files[0].OpenReadStream())).Close();
+                (await fileStorage.UploadFileAsync(backgroundImageFile.Entity, files[1].OpenReadStream())).Close();
 
                 return Ok(new AnimeResponse(true, null, newAnime));
             }

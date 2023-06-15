@@ -9,7 +9,7 @@ using nkeva_web_app.Tools;
 
 namespace nkeva_web_app.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : BaseController
     {

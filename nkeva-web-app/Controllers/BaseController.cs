@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace nkeva_web_app.Controllers
 {
-    public class BaseController : ControllerBase
+    public abstract class BaseController : ControllerBase
     {
         private IUser? _user;
         private UserType _userType;
@@ -35,11 +35,11 @@ namespace nkeva_web_app.Controllers
                 _userType = type;
                 if (type == UserType.Staff)
                 {
-                    _userObj = Task.FromResult(DB.Staff.SingleOrDefaultAsync(p => p.Id == id));
+                    _userObj = Task.FromResult(DB.Staff.Include(p => p.Role).SingleOrDefaultAsync(p => p.Id == id));
                 }
                 else
                 {
-                    _userObj = Task.FromResult(DB.Users.SingleOrDefaultAsync(p => p.Id == id));
+                    _userObj = Task.FromResult(DB.Users.Include(p => p.Role).Include(p => p.School).SingleOrDefaultAsync(p => p.Id == id));
                 }
                 _user = (IUser)_userObj;
                 return _user;
