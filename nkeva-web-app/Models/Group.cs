@@ -8,6 +8,8 @@ namespace nkeva_web_app.Models
         public int Id { get; set; }
         [Required]
         public int SchoolId { get; set; }
+        [Required]
+        public int TeacherId { get; set; }
         public bool IsSubGroup { get; set; } = false;
         public bool Active { get; set; } = false;
         [Required]
@@ -17,6 +19,8 @@ namespace nkeva_web_app.Models
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         public virtual School School { get; set; }
+
+        public virtual User Teacher { get; set; }
 
         public virtual ICollection<TimetableRecord> TimetableRecords { get; set; } = new List<TimetableRecord>();
         public virtual ICollection<Course> Courses { get; set; } = new List<Course>();

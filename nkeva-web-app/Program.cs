@@ -79,6 +79,6 @@ app.MapControllerRoute(
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
 
 app.Run();

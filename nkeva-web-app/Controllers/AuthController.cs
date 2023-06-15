@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-
 using nkeva_web_app.Requests;
 using nkeva_web_app.Responses;
 using nkeva_web_app.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Models.Interfaces;
-using nkeva_web_app.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace nkeva_web_app.Controllers
 {

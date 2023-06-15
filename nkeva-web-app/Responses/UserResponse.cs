@@ -31,8 +31,8 @@ namespace nkeva_web_app.Responses
             public string FirstName { get; set; }
             [JsonPropertyName("lastName")]
             public string LastName { get; set; }
-            [JsonPropertyName("surname")]
-            public string? Surname { get; set; } = null;
+            [JsonPropertyName("middleName")]
+            public string? MiddleName { get; set; } = null;
             [JsonPropertyName("email")]
             public string? Email { get; set; } = null;
             [JsonPropertyName("phone")]
@@ -53,11 +53,42 @@ namespace nkeva_web_app.Responses
                 Role = user.UserRole.Name;
                 FirstName = user.FirstName;
                 LastName = user.LastName;
-                Surname = user.MiddleName;
+                MiddleName = user.MiddleName;
                 Email = user.Email;
                 Phone = user.PhoneNumber;
                 IsOnline = user.IsOnline;
                 IsBlocked = user.IsBlocked;
+                CreatedAt = user.CreatedAt;
+                UpdatedAt = user.UpdatedAt;
+            }
+        }
+
+        public class ShortUser
+        {
+            public int Id { get; set; }
+            public string Role { get; set; }
+            public int SchoolId { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string? MiddleName { get; set; } = null;
+            [JsonPropertyName("isBlocked")]
+            public bool IsBlocked { get; set; } = false;
+            [JsonPropertyName("isOnline")]
+            public bool IsOnline { get; set; } = false;
+            [JsonPropertyName("createdAt")]
+            public DateTime CreatedAt { get; set; } = DateTime.Now;
+            [JsonPropertyName("updatedAt")]
+            public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+            public ShortUser(IUser user)
+            {
+                Id = user.Id;
+                Role = user.UserRole.Name;
+                FirstName = user.FirstName;
+                LastName = user.LastName;
+                MiddleName = user.MiddleName;
+                IsBlocked = user.IsBlocked;
+                IsOnline = user.IsOnline;
                 CreatedAt = user.CreatedAt;
                 UpdatedAt = user.UpdatedAt;
             }
