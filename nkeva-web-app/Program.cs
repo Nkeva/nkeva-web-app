@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 using nkeva_web_app;
 using nkeva_web_app.Attributes;
+using nkeva_web_app.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("SchoolRole_Admin", policy =>
         policy.Requirements.Add(new SchoolRoleRequirement("Admin")));
 });
+
+builder.Services.AddTransient<IFileStorageService, FileStorageService>();
 
 var app = builder.Build();
 

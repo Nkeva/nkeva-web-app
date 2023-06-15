@@ -6,9 +6,6 @@ namespace nkeva_web_app.Requests
     public class RegisterUserRequest
     {
         [Required]
-        [StringLength(512, MinimumLength = 8)]
-        public string Password { get; set; }
-        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
@@ -23,7 +20,7 @@ namespace nkeva_web_app.Requests
         [StringLength(128)]
         public string? MiddleName { get; set; }
         [Required]
-        public int RoleId { get; set; }
+        public string Role { get; set; }
         public bool IsBlocked { get; set; } = true;
     }
 }

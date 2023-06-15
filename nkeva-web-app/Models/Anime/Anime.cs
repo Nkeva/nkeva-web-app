@@ -15,9 +15,9 @@ namespace nkeva_web_app.Models.Anime
         [Required, MaxLength(2048)]
         public string Description { get; set; }
         [Required]
-        public string TitleImage { get; set; }
+        public int TitleImageId { get; set; }
         [Required]
-        public string BackgroundImage { get; set; }
+        public int BackgroundImageId { get; set; }
         [Required]
         public int GenreId { get; set; }
         [Required]
@@ -27,6 +27,8 @@ namespace nkeva_web_app.Models.Anime
         public double Rating { get; set; } = 0;
         public AnimeGenre Genre { get; set; }
         public AnimeFormat Format { get; set; }
+        public File TitleImage { get; set; }
+        public File BackgroundImage { get; set; }
 
         public virtual ICollection<AnimePersonage> Personages { get; set; } = new List<AnimePersonage>();
         public virtual ICollection<AnimeComment> Comments { get; set; } = new List<AnimeComment>();

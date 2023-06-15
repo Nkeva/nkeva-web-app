@@ -38,6 +38,19 @@ namespace nkeva_web_app.Controllers
 
                 await DB.SaveChangesAsync();
 
+                var schoolAdmin = await DB.Users.AddAsync(new Models.User()
+                {
+                    Login = $"admin_{result.Entity.Id}",
+                    Password = PasswordTool.HashPasword(request.Password, out var salt),
+                    PasswordSalt = salt,
+                    RoleId = 1,
+                    School = result.Entity,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                });
+
+                await DB.SaveChangesAsync();
+
                 return Ok(new SchoolResponce(result.Entity));
             }
             catch (Exception ex)

@@ -25,9 +25,9 @@ namespace nkeva_web_app.Responses
             [JsonPropertyName("description")]
             public string Description { get; set; }
             [JsonPropertyName("titleImage")]
-            public string TitleImage { get; set; }
+            public int TitleImage { get; set; }
             [JsonPropertyName("backgroundImage")]
-            public string BackgroundImage { get; set; }
+            public int BackgroundImage { get; set; }
             [JsonPropertyName("episodes")]
             public int Episodes { get; set; } = 0;
             [JsonPropertyName("rating")]
@@ -43,8 +43,8 @@ namespace nkeva_web_app.Responses
                 Name = anime.Name;
                 Year = anime.Year;
                 Description = anime.Description;
-                TitleImage = anime.TitleImage;
-                BackgroundImage = anime.BackgroundImage;
+                TitleImage = anime.TitleImageId;
+                BackgroundImage = anime.BackgroundImageId;
                 Episodes = anime.Episodes;
                 Rating = anime.Rating;
                 Genre = anime.Genre;

@@ -22,22 +22,36 @@ namespace nkeva_web_app.Controllers
 
         [OnlyStaffAuthorize]
         [HttpPost]
-        public async Task<IActionResult> AddAnimeToMainList([FromBody] AnimeRequest request)
+        public async Task<IActionResult> AddAnimeToMainList([FromBody] AnimeRequest request, IFormFileCollection files)
         {
             AnimeGenre? genre = await DB.AnimeGenres.SingleOrDefaultAsync(p => p.Id == request.GenreId);
             AnimeFormat? format = await DB.AnimeFormats.SingleOrDefaultAsync(p => p.Id == request.FormatId);
 
             if (genre != null && format != null)
             {
+                var titleImageFile = await DB.Files.AddAsync(new Models.File
+                {
+                    Name = files[0].FileName,
+                    Size = files[0].Length,
+                    OwnerId = null,
+                    SchoolId = null
+                });
+
+                var backgroundImageFile = await DB.Files.AddAsync(new Models.File
+                {
+                    Name = files[1].FileName,
+                    Size = files[1].Length,
+                    OwnerId = null,
+                    SchoolId = null
+                });
+
                 Anime newAnime = (await DB.Animes.AddAsync(new Anime
                 {
                     Name = request.Name,
                     Year = request.Year,
                     Description = request.Description,
-                    TitleImage = request.TitleImage,
-                    BackgroundImage = request.BackgroundImage,
-                    GenreId = request.GenreId,
-                    FormatId = request.FormatId,
+                    TitleImage = titleImageFile.Entity,
+                    BackgroundImage = backgroundImageFile.Entity,
                     Episodes = request.Episodes,
                     Rating = request.Rating,
                     Genre = genre,
@@ -89,11 +103,14 @@ namespace nkeva_web_app.Controllers
         [HttpPut("{animeID}")]
         public async Task<IActionResult> UpdateAnimeInfo(int animeID, [FromBody] AnimeRequest request)
         {
-            int? foundAnimeID = await DB.Animes
-                .Select(p => p.Id)
-                .SingleOrDefaultAsync(p => p == animeID);
+            var foundAnime = await DB.Animes
+                .Include(p => p.Genre)
+                .Include(p => p.Format)
+                .Include(p => p.TitleImage)
+                .Include(p => p.BackgroundImage)
+                .SingleOrDefaultAsync(p => p.Id == animeID);
 
-            if (foundAnimeID == null)
+            if (foundAnime == null)
             {
                 return NotFound(new AnimeResponse(false, "Invalid anime id!"));
             }
@@ -106,24 +123,17 @@ namespace nkeva_web_app.Controllers
                 return NotFound(new AnimeResponse(false, "Invalid genre id or format id!"));
             }
 
-            Anime newAnime = DB.Animes.Update(new Anime
-            {
-                Name = request.Name,
-                Year = request.Year,
-                Description = request.Description,
-                TitleImage = request.TitleImage,
-                BackgroundImage = request.BackgroundImage,
-                GenreId = request.GenreId,
-                FormatId = request.FormatId,
-                Episodes = request.Episodes,
-                Rating = request.Rating,
-                Genre = genre,
-                Format = format
-            }).Entity;
+            foundAnime.Name = request.Name;
+            foundAnime.Description = request.Description;
+            foundAnime.Year = request.Year;
+            foundAnime.Episodes = request.Episodes;
+            foundAnime.Rating = request.Rating;
+            foundAnime.Genre = genre;
+            foundAnime.Format = format;
 
             await DB.SaveChangesAsync();
 
-            return Ok(new AnimeResponse(true, null, newAnime));
+            return Ok(new AnimeResponse(true, null, foundAnime));
         }
 
         [OnlyStaffAuthorize]

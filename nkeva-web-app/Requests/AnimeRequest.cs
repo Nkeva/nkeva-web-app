@@ -13,10 +13,6 @@ namespace nkeva_web_app.Requests
         [StringLength(2048, MinimumLength = 0)]
         public string Description { get; set; }
         [Required]
-        public string TitleImage { get; set; }
-        [Required]
-        public string BackgroundImage { get; set; }
-        [Required]
         public int GenreId { get; set; }
         [Required]
         public int FormatId { get; set; }

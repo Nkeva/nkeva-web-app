@@ -25,5 +25,12 @@ namespace nkeva_web_app.Tools
             var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, HashAlgorithmName.SHA512, keySize);
             return hashToCompare.SequenceEqual(Convert.FromHexString(hash));
         }
+
+        public static string GenerateRandomPassword(int len)
+        {
+            var password = new byte[len];
+            RandomNumberGenerator.Fill(password);
+            return Convert.ToHexString(password);
+        }
     }
 }

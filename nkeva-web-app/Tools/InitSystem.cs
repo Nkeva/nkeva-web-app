@@ -33,8 +33,8 @@ namespace nkeva_web_app.Tools
                     new StaffRole() {Name = "Accountant"},
                     new StaffRole() {Name = "Support"}
                 });
+                db.SaveChanges();
             }
-            db.SaveChanges();
             string hash = PasswordTool.HashPasword("admin", out byte[] salt);
             var admin = db.StaffRoles.Single(p => p.Name == "Admin");
             db.Staff.Add(new Staff()
@@ -46,7 +46,6 @@ namespace nkeva_web_app.Tools
                 UpdatedAt = DateTime.Now,
                 IsBlocked = false,
                 Role = admin,
-                RoleId = admin.Id,
                 LastName = "Sys",
                 FirstName = "Admin",
                 PhoneNumber = "1234567890",
@@ -55,11 +54,11 @@ namespace nkeva_web_app.Tools
 
             db.UsersSchoolRoles.AddRange(new List<SchoolRole>()
             {
-                new SchoolRole() {Id = 0, Name = "Admin"},
-                new SchoolRole() {Id = 1, Name = "HeadTeacher"},
-                new SchoolRole() {Id = 2, Name = "Teacher"},
-                new SchoolRole() {Id = 3, Name = "Student"},
-                new SchoolRole() {Id = 4, Name = "Parent"}
+                new SchoolRole() {Name = "Admin"},
+                new SchoolRole() {Name = "HeadTeacher"},
+                new SchoolRole() {Name = "Teacher"},
+                new SchoolRole() {Name = "Student"},
+                new SchoolRole() {Name = "Parent"}
             });
 
 

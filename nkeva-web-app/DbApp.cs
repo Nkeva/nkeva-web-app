@@ -379,6 +379,21 @@ namespace nkeva_web_app
                 .HasForeignKey(a => a.FormatId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Anime>()
+                .HasOne(a => a.TitleImage)
+                .WithMany()
+                .HasForeignKey(a => a.TitleImageId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Anime>()
+                .HasOne(a => a.BackgroundImage)
+                .WithMany()
+                .HasForeignKey(a => a.BackgroundImageId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Models.File>()
+                .Ignore(f => f.Animes);
+
             modelBuilder.Entity<AnimePersonage>()
                 .HasOne(ap => ap.Anime)
                 .WithMany(a => a.Personages)
