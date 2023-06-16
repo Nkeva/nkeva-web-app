@@ -226,7 +226,7 @@ namespace nkeva_web_app.Controllers
 
         // chat members
 
-        [HttpPost("{chatID}/users/{userID}}")]
+        [HttpPost("{chatID}/users/{userID}")]
         public async Task<IActionResult> AddChatMember(int chatID, int userID)
         {
             Chat? chat = await DB.Chats
