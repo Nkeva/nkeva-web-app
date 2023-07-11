@@ -1,0 +1,16 @@
+﻿.back {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.front {
+    background-color: #171717;
+    padding: 20px;
+    border-radius: 15px;
+}

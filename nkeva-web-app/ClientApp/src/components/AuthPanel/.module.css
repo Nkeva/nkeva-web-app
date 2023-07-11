@@ -1,0 +1,204 @@
+﻿.main {
+    display: flex;
+}
+
+.log_in_panel {
+    position: relative;
+    padding-block: 10px;
+    padding-inline: 20px;
+}
+
+.log_in_header {
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-65%);
+}
+
+.email_input {
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(217, 217, 217, 0.00);
+    color: white;
+    padding-left: 10px;
+    padding-right: 3px;
+    padding-block: 12px;
+    font-size: 1.171875rem;
+}
+
+.email_input::placeholder {
+    color: #AAA;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.password_input {
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: #2D313C;
+    color: white;
+    padding-left: 10px;
+    padding-right: 3px;
+    padding-block: 12px;
+    font-size: 1.171875rem;
+}
+
+.password_input::-ms-reveal {
+    filter: invert(100%);
+}
+
+.password_input::placeholder {
+    color: #AAA;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.log_in_button {
+    cursor: pointer;
+    width: 403px;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(10, 93, 255, 0.49);
+    padding-inline: 5px;
+    padding-block: 12px;
+    font-size: 1.171875rem;
+}
+
+.log_in_button p {
+    color: #AAA;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.lost_password_link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #26A4FF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.line_back {
+    position: relative;
+    width: 2px;
+    margin-inline: 5px;
+}
+
+.line {
+    height: 100%;
+    background-color: #FFFFFF;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.sign_in_panel {
+    padding-block: 65px;
+    padding-inline: 115px;
+}
+
+.sign_in_header {
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.sign_in_button {
+    cursor: pointer;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(217, 217, 217, 0.00);
+    width: fit-content;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 7px;
+}
+
+.google_img {
+    content: url(./img/google.svg);
+}
+
+.sign_in_text {
+    color: #AAA;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.15px;
+}
+
+.parrent_assecc {
+    cursor: pointer;
+    border-radius: 10px;
+    width: 150px;
+    border: 1px solid #565656;
+    background: #484646;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 7px;
+}
+
+.parrent_assecc p {
+    color: #AAA;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.extra {
+    display: flex;
+}
+
+.lang_name {
+    color: #26A4FF;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.cookies_text {
+    color: #26A4FF;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.logo {
+    content: url(./img/logo.svg);
+    margin-right: 10px;
+}
+
+.google_img {
+    content: url(./img/google.svg);
+    margin-right: 6px;
+}
+
+.arrow_img {
+    content: url(./img/arrow.svg);
+}
+
+.question_img {
+    content: url(./img/question.svg);
+}
