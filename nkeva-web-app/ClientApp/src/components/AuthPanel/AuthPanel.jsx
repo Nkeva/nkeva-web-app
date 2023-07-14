@@ -44,11 +44,13 @@ const AuthPanel = ({ children }) => {
                 <div className={cl.extra}>
                     <div className={cl.lang}>
                         <span className={cl.lang_name}>English (EN)</span>
+                        <Space width="5px" />
                         <img className={cl.arrow_img} alt="language arrow" />
                     </div>
-                    <Space width="15px" />
+                    <Space width="20px" />
                     <div className={cl.cookies}>
                         <img className={cl.question_img} alt="guestion mark" />
+                        <Space width="5px" />
                         <span className={cl.cookies_text}>Cookies notice</span>
                     </div>
                 </div>

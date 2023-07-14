@@ -105,7 +105,7 @@
 
 .sign_in_panel {
     padding-block: 65px;
-    padding-inline: 115px;
+    padding-inline: 105px;
 }
 
 .sign_in_header {
@@ -162,6 +162,10 @@
 }
 
 .extra {
+    display: flex;
+}
+
+.cookies, .lang {
     display: flex;
 }
 
