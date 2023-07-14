@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomHeader from "../CustomHeader/CustomHeader";
 import Space from "../Space/Space";
 import cl from "./.module.css";
 
-const AuthPanel = ({ children }) => {
+const AuthPanel = () => {
+
+    const [isLangMenuVisible, setLangMenuVisibility] = useState(false);
 
     return (
         <div className={cl.main}>
@@ -37,15 +39,21 @@ const AuthPanel = ({ children }) => {
                     <span className={cl.sign_in_text}>@gmail.com</span>
                 </div>
                 <Space height="50px" />
-                <div className={cl.parrent_assecc}>
-                    <p className={cl.parrent_assecc_text}>Access like parrent</p>
+                <div className={cl.parent_access}>
+                    <p className={cl.parent_access_text}>Access like parent</p>
                 </div>
                 <Space height="20px" />
                 <div className={cl.extra}>
                     <div className={cl.lang}>
-                        <span className={cl.lang_name}>English (EN)</span>
-                        <Space width="5px" />
-                        <img className={cl.arrow_img} alt="language arrow" />
+                        <div className={cl.current_lang} onClick={() => setLangMenuVisibility(prev => !prev)}>
+                            <span className={cl.current_lang_name}>English (EN)</span>
+                            <Space width="5px" />
+                            <img className={cl.arrow_img} alt="language arrow" />
+                        </div>
+                        <div className={cl.lang_menu} style={{ display: isLangMenuVisible ? 'block' : 'none' }}>
+                            <p className={`${cl.lang_name} ${cl.en_lang_name}`} onClick={() => setLangMenuVisibility(false)}>English (EN)</p>
+                            <p className={`${cl.lang_name} ${cl.ua_lang_name}`} onClick={() => setLangMenuVisibility(false)}>Українська (UA)</p>
+                        </div>
                     </div>
                     <Space width="20px" />
                     <div className={cl.cookies}>

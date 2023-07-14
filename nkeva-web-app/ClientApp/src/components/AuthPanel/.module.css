@@ -140,7 +140,7 @@
     letter-spacing: 0.15px;
 }
 
-.parrent_assecc {
+.parent_access {
     cursor: pointer;
     border-radius: 10px;
     width: 150px;
@@ -151,7 +151,7 @@
     padding: 7px;
 }
 
-.parrent_assecc p {
+.parent_access p {
     color: #AAA;
     text-align: center;
     font-size: 15px;
@@ -165,11 +165,22 @@
     display: flex;
 }
 
-.cookies, .lang {
+.cookies {
+    cursor: pointer;
     display: flex;
 }
 
-.lang_name {
+.lang {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+}
+
+.current_lang {
+    display: flex;
+}
+
+.current_lang_name {
     color: #26A4FF;
     text-align: center;
     font-size: 15px;
@@ -177,6 +188,37 @@
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.15px;
+}
+
+.lang_menu {
+    position: absolute;
+    top: 22px;
+    left: -45px;
+    background-color: rgba(23, 23, 23, 1);
+    border: 1px solid rgba(86, 86, 86, 1);
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    max-height: 180px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.lang_menu::-webkit-scrollbar {
+    display: none;
+}
+
+.lang_name {
+    color: #AAAAAA;
+    padding-block: 5px;
+    padding-inline: 20px;
+    margin-block: 10px;
+    white-space: nowrap;
+}
+
+.lang_name:hover {
+    background-color: rgba(10, 93, 255, 0.49);
 }
 
 .cookies_text {
@@ -205,4 +247,5 @@
 
 .question_img {
     content: url(./img/question.svg);
+    width: 18px;
 }
