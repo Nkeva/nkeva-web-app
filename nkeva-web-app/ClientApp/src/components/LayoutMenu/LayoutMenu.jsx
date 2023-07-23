@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cl from "./.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import CustomHeader from "../CustomHeader/CustomHeader";
@@ -7,6 +7,8 @@ import Space from "../Space/Space";
 const LayoutMenu = () => {
 
     const navigate = useNavigate();
+
+    const [isLangMenuVisible, setLangMenuVisibility] = useState(false);
 
     function getTitle() {
         switch (window.location.pathname) {
@@ -84,11 +86,21 @@ const LayoutMenu = () => {
                 </div>
             </aside>
             <div className={cl.content}>
+                <Space height="90px" />
                 <header className={cl.top_menu}>
                     <div className={cl.page_header}>
                         <h1>{getTitle()}</h1>
                     </div>
                     <div className={cl.top_menu_options}>
+                        <div className={cl.lang}>
+                            <div className={cl.current_lang} onClick={() => setLangMenuVisibility(prev => !prev)}>
+                                <span className={cl.current_lang_name}>English (EN)</span>
+                            </div>
+                            <div className={cl.lang_menu} style={{ display: isLangMenuVisible ? 'block' : 'none' }}>
+                                <p className={`${cl.lang_name} ${cl.en_lang_name}`} onClick={() => setLangMenuVisibility(false)}>English (EN)</p>
+                                <p className={`${cl.lang_name} ${cl.ua_lang_name}`} onClick={() => setLangMenuVisibility(false)}>Українська (UA)</p>
+                            </div>
+                        </div>
                         <div className={cl.wall}></div>
                         <img className={cl.notifications} alt="notifications" />
                         <img className={cl.leave} alt="leave" />

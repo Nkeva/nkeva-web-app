@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AuthorizationPage from "./pages/AuthorizationPage";
+import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 import LayoutMenu from "./components/LayoutMenu/LayoutMenu";
+import AccountPage from "./pages/AccountPage/AccountPage";
 
 const App = () => {
 
@@ -10,7 +11,7 @@ const App = () => {
             <Routes>
                 <Route index element={<AuthorizationPage />} />
                 <Route path="account" element={<LayoutMenu />}>
-                    <Route index element={<></>} />
+                    <Route index element={<AccountPage />} />
                     <Route path="courses" element={<></>} />
                     <Route path="schedule" element={<></>} />
                     <Route path="chats" element={<></>} />
