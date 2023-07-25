@@ -39,7 +39,6 @@ namespace nkeva_web_app.Tools
             var admin = db.StaffRoles.Single(p => p.Name == "Admin");
             db.Staff.Add(new Staff()
             {
-                Login = "admin",
                 Password = hash,
                 PasswordSalt = salt,
                 CreatedAt = DateTime.Now,

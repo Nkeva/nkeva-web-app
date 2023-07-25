@@ -25,13 +25,13 @@ namespace nkeva_web_app.Controllers
             List<Claim> claims = new List<Claim>();
             UserType type = UserType.Staff;
             // try to find user in school users
-            IUser? user = await DB.Users.Include(x => x.Role).FirstOrDefaultAsync(x => x.Login == request.Login);
+            IUser? user = await DB.Users.Include(x => x.Role).FirstOrDefaultAsync(x => x.Email == request.Email);
 
             if (user == null)
             {
 
                 // try to find user in staff
-                user = await DB.Staff.Include(x => x.Role).FirstOrDefaultAsync(x => x.Login == request.Login);
+                user = await DB.Staff.Include(x => x.Role).FirstOrDefaultAsync(x => x.Email == request.Email);
 
                 // if user not found
                 if(user == null || !Tools.PasswordTool.VerifyPassword(request.Password, user.Password, user.PasswordSalt))

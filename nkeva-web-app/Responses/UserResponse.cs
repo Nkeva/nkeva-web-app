@@ -21,8 +21,6 @@ namespace nkeva_web_app.Responses
         {
             [JsonPropertyName("id")]
             public int Id { get; set; }
-            [JsonPropertyName("login")]
-            public string Login { get; set; }
             [JsonPropertyName("role")]
             public string Role { get; set; }
             [JsonPropertyName("school")]
@@ -41,6 +39,8 @@ namespace nkeva_web_app.Responses
             public bool IsOnline { get; set; } = false;
             [JsonPropertyName("isBlocked")]
             public bool IsBlocked { get; set; } = false;
+            [JsonPropertyName("avatar")]
+            public int? Avatar { get; set; } = null;
             [JsonPropertyName("createdAt")]
             public DateTime CreatedAt { get; set; } = DateTime.Now;
             [JsonPropertyName("updatedAt")]
@@ -49,7 +49,6 @@ namespace nkeva_web_app.Responses
             public User(IUser user)
             {
                 Id = user.Id;
-                Login = user.Login;
                 Role = user.UserRole.Name;
                 FirstName = user.FirstName;
                 LastName = user.LastName;
@@ -58,6 +57,7 @@ namespace nkeva_web_app.Responses
                 Phone = user.PhoneNumber;
                 IsOnline = user.IsOnline;
                 IsBlocked = user.IsBlocked;
+                Avatar = user.AvatarId;
                 CreatedAt = user.CreatedAt;
                 UpdatedAt = user.UpdatedAt;
             }

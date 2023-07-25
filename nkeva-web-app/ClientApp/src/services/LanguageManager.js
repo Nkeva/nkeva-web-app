@@ -1,52 +1,40 @@
 import { CookieManager } from "./CookieManager";
 
-const fs = require('fs');
-
 export class LanguageManager {
     static defaultLang = 'en';
+    static data = null;
 
     static get(key) {
-        var lang = CookieManager.get('language');
-
-        if (lang === null) {
+        if (CookieManager.get('language') === null) {
             CookieManager.set('language', this.defaultLang);
-            lang = this.defaultLang;
         }
 
-        try {
-            const jsonData = JSON.parse(fs.readFileSync(`../../public/strings/${lang}.json`, 'utf8'));
-            return jsonData.hasOwnProperty(key) || typeof jsonData[key] === 'string' ? jsonData[key] : key;
-        } catch (error) {
-            console.error('Error reading or parsing JSON file:', error);
-            return key;
-        }
-    }
-
-    static getAsync(key) {
-        var lang = CookieManager.get('language');
-
-        if (lang === null) {
-            CookieManager.set('language', this.defaultLang);
-            lang = this.defaultLang;
+        if (this.data === null) {
+            this.data = require(`../storage/strings/${CookieManager.get('language')}.json`)
         }
 
-        fs.readFile(`../../public/strings/${lang}.json`, 'utf8', (err, data) => {
-            if (err) {
-                console.error('Error reading or parsing JSON file:', error);
+        var value = this.data;
+
+        key.split('.').forEach(keyPer => {
+            if (value[keyPer]) {
+                value = value[keyPer];
             } else {
-                const jsonData = JSON.parse(data);
-                return jsonData.hasOwnProperty(key) || typeof jsonData[key] === 'string' ? jsonData[key] : key;
+                return key;
             }
         });
+
+        return typeof value === 'string' ? value : key;
     }
 
     static setLang(lang) {
-        if (fs.existsSync(`../../public/strings/${lang}.json`)) {
-            CookieManager.set('language', lang, '/');
-            return true;
+        try {
+            this.data = require(`../storage/strings/${lang}.json`);
+        } catch (err) {
+            return false;
         }
-        
-        return false;
+
+        CookieManager.set('language', lang);
+        return true;
     }
 
     static currentLang() {

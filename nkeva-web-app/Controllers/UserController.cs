@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Attributes;
@@ -52,7 +53,6 @@ namespace nkeva_web_app.Controllers
                 Role = role,
                 Password = PasswordTool.HashPasword(password, out var salt),
                 PasswordSalt = salt,
-                Login = StringTool.Transliterate(request.LastName) + "_" + StringTool.RandomString(6),
                 School = school
             };
 

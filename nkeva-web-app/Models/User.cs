@@ -24,9 +24,6 @@ namespace nkeva_web_app.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [StringLength(32)]
-        public string Login { get; set; }
-        [Required]
         [StringLength(2048, MinimumLength = 8)]
         public string Password { get; set; }
         [Required]
@@ -34,11 +31,13 @@ namespace nkeva_web_app.Models
         [Required]
         [Phone]
         public string PhoneNumber { get; set; }
+        public int? AvatarId { get; set; } = null;
         public bool IsOnline { get; set; } = false;
         public bool IsBlocked { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+        public virtual File? Avatar { get; set; } = null;
         public virtual School School { get; set; }
         public virtual SchoolRole Role { get; set; }
         public IRole UserRole => Role;

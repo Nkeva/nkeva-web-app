@@ -1,10 +1,21 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 import LayoutMenu from "./components/LayoutMenu/LayoutMenu";
 import AccountPage from "./pages/AccountPage/AccountPage";
+import { AuthAPI } from "./services/api/auth";
 
 const App = () => {
+
+    React.useEffect(() => {
+        AuthAPI.check().then((res) => {
+            if (res.status === 401) {
+                if (window.location.pathname !== "/") {
+                    window.location.replace("/");
+                }
+            }
+        });
+    });
 
     return (
         <BrowserRouter>

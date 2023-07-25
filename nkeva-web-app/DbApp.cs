@@ -331,10 +331,6 @@ namespace nkeva_web_app
                 .HasForeignKey(u => u.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Login)
-                .IsUnique();
-
             #endregion
 
             #endregion

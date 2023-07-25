@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "email-input-placeholder": "Електронна пошта",
+        "password-input-placeholder": "Пароль",
+        "log-in-button": "Увійти",
+        "lost-password-link": "Забули пароль?",
+        "sign-in-header": "Увійти за допомогою",
+        "access-like-parent-button": "Увійти як батько",
+        "cookies-notice-link": "Повідомлення про cookie",
+        "current-lang": "Українська (UA)"
+    }
+}

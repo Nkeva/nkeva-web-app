@@ -19,6 +19,13 @@
     display: flex;
 }
 
+.logo_text {
+    width: fit-content;
+    font-size: 56px;
+    color: #FFFFFF;
+    margin-top: 4px;
+}
+
 .log_in_panel {
     position: relative;
     padding-block: 10px;
@@ -87,6 +94,7 @@
 }
 
 .log_in_button p {
+    user-select: none;
     color: #AAA;
     text-align: center;
     font-style: normal;
@@ -97,14 +105,20 @@
 
 .lost_password_link {
     display: block;
-    text-align: center;
     text-decoration: none;
+    width: fit-content;
     color: #26A4FF;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.lost_password_link:hover {
+    text-decoration: underline;
 }
 
 .line_back {
@@ -121,8 +135,9 @@
 }
 
 .sign_in_panel {
+    position: relative;
     padding-block: 65px;
-    padding-inline: 105px;
+    padding-inline: 150px;
 }
 
 .sign_in_header {
@@ -179,7 +194,14 @@
 }
 
 .extra {
+    user-select: none;
+    position: absolute;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
 }
 
 .cookies {

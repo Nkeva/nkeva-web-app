@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "email-input-placeholder": "Email",
+        "password-input-placeholder": "Password",
+        "log-in-button": "Log in",
+        "lost-password-link": "Lost password?",
+        "sign-in-header": "Sign in with",
+        "access-like-parent-button": "Access like parent",
+        "cookies-notice-link": "Cookies notice",
+        "current-lang": "English (EN)"
+    }
+}

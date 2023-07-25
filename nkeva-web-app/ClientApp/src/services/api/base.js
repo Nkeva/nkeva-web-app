@@ -1,7 +1,7 @@
-export class BaseApi {
+export class BaseAPI {
     static async get(url, options = {}) {
-        let response = fetch(`/api/${url}`, options).then((response) => BaseApi.addAuthorizationHeader(response, options));
-        response.catch((error) => BaseApi.errorHandling(error));
+        let response = fetch(`/api/${url}`, options).then((response) => BaseAPI.addAuthorizationHeader(response, options));
+        response.catch((error) => BaseAPI.errorHandling(error));
         return response;
     }
 
@@ -13,8 +13,8 @@ export class BaseApi {
             },
             body: JSON.stringify(data),
             ...options,
-        }).then((response) => BaseApi.addAuthorizationHeader(response, options));
-        response.catch((error) => BaseApi.errorHandling(error));
+        }).then((response) => BaseAPI.addAuthorizationHeader(response, options));
+        response.catch((error) => BaseAPI.errorHandling(error));
         return response;
     }
 
@@ -26,8 +26,8 @@ export class BaseApi {
             },
             body: JSON.stringify(data),
             ...options,
-        }).then((response) => BaseApi.addAuthorizationHeader(response, options));
-        response.catch((error) => BaseApi.errorHandling(error));
+        }).then((response) => BaseAPI.addAuthorizationHeader(response, options));
+        response.catch((error) => BaseAPI.errorHandling(error));
         return response;
     }
 
@@ -35,8 +35,8 @@ export class BaseApi {
         let response = fetch(`/api/${url}`, {
             method: "DELETE",
             ...options,
-        }).then((response) => BaseApi.addAuthorizationHeader(response, options));
-        response.catch((error) => BaseApi.errorHandling(error));
+        }).then((response) => BaseAPI.addAuthorizationHeader(response, options));
+        response.catch((error) => BaseAPI.errorHandling(error));
         return response;
     }
 

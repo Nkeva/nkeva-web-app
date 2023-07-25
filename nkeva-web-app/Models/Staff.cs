@@ -8,9 +8,6 @@ namespace nkeva_web_app.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(32, MinimumLength = 1)]
-        public string Login { get; set; }
-        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
@@ -31,11 +28,13 @@ namespace nkeva_web_app.Models
         public string? MiddleName { get; set; } = null;
         [Required]
         public int RoleId { get; set; }
+        public int? AvatarId { get; set; } = null;
         public bool IsBlocked { get; set; } = false;
         public bool IsOnline { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+        public virtual File? Avatar { get; set; } = null;
         public virtual StaffRole Role { get; set; }
 
         public IRole UserRole => Role;
