@@ -137,7 +137,8 @@
 .sign_in_panel {
     position: relative;
     padding-block: 65px;
-    padding-inline: 150px;
+    padding-inline: 140px;
+    width: 175px;
 }
 
 .sign_in_header {
