@@ -11,6 +11,8 @@ const AuthorizationPage = () => {
 
     const langMenuRef = React.useRef();
 
+    const [isLoggingIn, setLoggingIn] = React.useState(false);
+    const [errorText, setErrorText] = React.useState(undefined);
     const [isLangMenuVisible, setLangMenuVisibility] = React.useState(false);
 
     function ChangeLang(lang) {
@@ -18,17 +20,41 @@ const AuthorizationPage = () => {
         setLangMenuVisibility(false);
     }
 
-    function LoginRequest(email, password) {
-        AuthAPI.login(email, password).then(res => {
+    async function LoginRequest(email, password) {
+        setLoggingIn(true);
+        await AuthAPI.login(email, password).then(res => {
             if (res.ok) {
                 navigate('/account', { replace: true });
             }
+            else {
+                setErrorText("Authorization failed!");
+            }
         });
+        setLoggingIn(false);
     }
 
     function WindowClickEvent(event) {
         if (isLangMenuVisible && !langMenuRef.current.contains(event.target)) {
             setLangMenuVisibility(false);
+        }
+    }
+
+    function RenderError() {
+        if (errorText) {
+            return (
+                <>
+                    <div className={cl.error}>
+                        <div className={cl.error_text_area}>
+                            <span className={cl.error_header}>Error:</span>
+                            <span className={cl.error_text}>{errorText}</span>
+                        </div>
+                        <div className={cl.error_close_area}>
+                            <img className={cl.error_close_sign} onClick={() => setErrorText(undefined)} />
+                        </div>
+                    </div>
+                    <Space height="15px" />
+                </>
+            );
         }
     }
 
@@ -45,33 +71,35 @@ const AuthorizationPage = () => {
     return (
         <div className={cl.main} >
             <div className={cl.front}>
-                <div className={cl.main_panel}>
-                    <div className={cl.log_in_panel}>
-                        <div className={cl.log_in_header}>
-                            <img className={cl.logo} alt="nkeva logo" />
-                            <h1 className={cl.logo_text}>School</h1>
-                        </div>
-                        <Space height="20px" />
-                        <form className={cl.log_inputs}>
-                            <input className={cl.email_input} type="email" placeholder={LanguageManager.get("auth.email-input-placeholder")} />
-                            <br /><Space height="15px" />
-                            <input className={cl.password_input} type="password" placeholder={LanguageManager.get("auth.password-input-placeholder")} />
-                            <br /><Space height="15px" />
-                            <div className={cl.log_in_button} onClick={() => LoginRequest(
-                                document.getElementsByClassName(cl.email_input)[0].value,
-                                document.getElementsByClassName(cl.password_input)[0].value
-                            )}>
-                                <p>{LanguageManager.get("auth.log-in-button")}</p>
-                            </div>
-                        </form>
-                        <Space height="20px" />
-                        <a className={cl.lost_password_link}>{LanguageManager.get("auth.lost-password-link")}</a>
+                <div className={cl.log_in_panel}>
+                    <div className={cl.log_in_header}>
+                        <img className={cl.logo} alt="nkeva logo" />
+                        <h1 className={cl.logo_text}>School</h1>
                     </div>
-                    <div className={cl.line_back}>
-                        <div className={cl.line}>
+                    <Space height="20px" />
+                    <form className={cl.log_inputs}>
+                        {RenderError()}
+                        <input className={cl.email_input} type="email" placeholder={LanguageManager.get("auth.email-input-placeholder")} />
+                        <br /><Space height="15px" />
+                        <input className={cl.password_input} type="password" placeholder={LanguageManager.get("auth.password-input-placeholder")} />
+                        <br /><Space height="15px" />
+                        <div className={cl.log_in_button} onClick={() => LoginRequest(
+                            document.getElementsByClassName(cl.email_input)[0].value,
+                            document.getElementsByClassName(cl.password_input)[0].value
+                        )}>
+                            {
+                                isLoggingIn
+                                    ? <p className={cl.log_in_button_text}>...</p>
+                                    : <p className={cl.log_in_button_text}>{LanguageManager.get("auth.log-in-button")}</p>
+                            }
                         </div>
-                    </div>
-                    <div className={cl.sign_in_panel}>
+                    </form>
+                    <Space height="20px" />
+                    <a className={cl.lost_password_link}>{LanguageManager.get("auth.lost-password-link")}</a>
+                </div>
+                <div className={cl.line}></div>
+                <div className={cl.sign_in_panel}>
+                    <div className={cl.sign_in_cont}>
                         <p className={cl.sign_in_header}>{LanguageManager.get("auth.sign-in-header")}</p>
                         <Space height="10px" />
                         <div className={cl.sign_in_button}>
