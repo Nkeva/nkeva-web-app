@@ -400,7 +400,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 53%;
+    margin-left: 50%;
     transform: translateX(-50%);
     width: 32vw;
 }

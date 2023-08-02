@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using nkeva_web_app.Models;
 using nkeva_web_app.Models.Anime;
-using nkeva_web_app.Models.Enums;
 
 namespace nkeva_web_app
 {
@@ -163,6 +162,12 @@ namespace nkeva_web_app
                 .HasOne(g => g.School)
                 .WithMany(s => s.Groups)
                 .HasForeignKey(g => g.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Group>()
+                .HasOne(a => a.Teacher)
+                .WithMany()
+                .HasForeignKey(a => a.TeacherId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Group>()

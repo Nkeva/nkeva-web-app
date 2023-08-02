@@ -23,11 +23,19 @@ const AuthorizationPage = () => {
     async function LoginRequest(email, password) {
         setLoggingIn(true);
         await AuthAPI.login(email, password).then(res => {
-            if (res.ok) {
-                navigate('/account', { replace: true });
-            }
-            else {
-                setErrorText("Authorization failed!");
+            switch (res.status) {
+                case 200:
+                    navigate('/account', { replace: true });
+                    break;
+                case 400 || 401:
+                    setErrorText("invalid email or password");
+                    break;
+                case 500:
+                    setErrorText("internal server error");
+                    break;
+                default:
+                    setErrorText("authorization failed");
+                    break;
             }
         });
         setLoggingIn(false);
