@@ -40,7 +40,7 @@ namespace nkeva_web_app.Controllers
 
                 var schoolAdmin = await DB.Users.AddAsync(new Models.User()
                 {
-                    Password = PasswordTool.HashPasword(request.Password, out var salt),
+                    Password = PasswordTool.HashPassword(request.Password, out var salt),
                     PasswordSalt = salt,
                     RoleId = 1,
                     School = result.Entity,

@@ -35,7 +35,7 @@ namespace nkeva_web_app.Tools
                 });
                 db.SaveChanges();
             }
-            string hash = PasswordTool.HashPasword("admin", out byte[] salt);
+            string hash = PasswordTool.HashPassword("admin", out byte[] salt);
             var admin = db.StaffRoles.Single(p => p.Name == "Admin");
             db.Staff.Add(new Staff()
             {

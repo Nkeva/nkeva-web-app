@@ -8,7 +8,7 @@ namespace nkeva_web_app.Tools
         const int keySize = 512;
         const int iterations = 350000;
 
-        public static string HashPasword(string password, out byte[] salt)
+        public static string HashPassword(string password, out byte[] salt)
         {
             salt = RandomNumberGenerator.GetBytes(keySize);
             var hash = Rfc2898DeriveBytes.Pbkdf2(

@@ -7,6 +7,12 @@
     bottom: 0;
     left: 0;
     right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
 }
 
 @media (max-height: 650px) {
@@ -372,6 +378,7 @@
     font-weight: 500;
     line-height: 22px;
     letter-spacing: 0.15px;
+    margin-left: 4px;
 }
 
 .parent_access {
@@ -456,7 +463,6 @@
     border-radius: 10px;
     width: fit-content;
     height: fit-content;
-    max-height: 180px;
     overflow: hidden;
     overflow-y: scroll;
 }

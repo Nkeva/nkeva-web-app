@@ -51,7 +51,7 @@ namespace nkeva_web_app.Controllers
                 MiddleName = request.MiddleName,
                 IsBlocked = request.IsBlocked,
                 Role = role,
-                Password = PasswordTool.HashPasword(password, out var salt),
+                Password = PasswordTool.HashPassword(password, out var salt),
                 PasswordSalt = salt,
                 School = school
             };

@@ -41,12 +41,6 @@ const AuthorizationPage = () => {
         setLoggingIn(false);
     }
 
-    function WindowClickEvent(event) {
-        if (isLangMenuVisible && !langMenuRef.current.contains(event.target)) {
-            setLangMenuVisibility(false);
-        }
-    }
-
     function RenderError() {
         if (errorText) {
             return (
@@ -66,13 +60,33 @@ const AuthorizationPage = () => {
         }
     }
 
+    function WindowClickEvent(event) {
+        if (isLangMenuVisible && !langMenuRef.current.contains(event.target)) {
+            setLangMenuVisibility(false);
+        }
+    }
+
+    function WindowKeyPressEvent(event) {
+        var emailInput = document.getElementsByClassName(cl.email_input)[0];
+        var passwordInput = document.getElementsByClassName(cl.password_input)[0];
+
+        if (event.key === "Enter" && (document.activeElement === emailInput || document.activeElement === passwordInput)) {
+            LoginRequest(
+                emailInput.value,
+                passwordInput.value
+            );
+        }
+    }
+
     React.useEffect(() => {
         document.body.style.backgroundColor = "#212121";
 
         window.addEventListener("click", WindowClickEvent);
+        window.addEventListener("keypress", WindowKeyPressEvent);
 
         return () => {
             window.removeEventListener("click", WindowClickEvent);
+            window.removeEventListener("keypress", WindowKeyPressEvent);
         };
     });
 
