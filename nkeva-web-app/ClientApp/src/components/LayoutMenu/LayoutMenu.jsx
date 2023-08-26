@@ -54,7 +54,7 @@ const LayoutMenu = () => {
                     <div className={cl.top_nav_panel}>
                         <img className={`${cl.menu_img} ${isNavMenuOpened ? cl.menu_img_rotated : ''}`} onClick={() => setNavMenuState(!isNavMenuOpened)} alt="menu" />
                         <div className={`${cl.logo} ${isNavMenuOpened ? cl.logo_visible : ''}`}>
-                            <img className={cl.logo_img} />
+                            <img className={cl.logo_img} alt="logo" />
                             <h1 className={cl.logo_text}>School</h1>
                         </div>
                     </div>
