@@ -117,7 +117,7 @@ const AuthorizationPage = () => {
                         </div>
                     </form>
                     <Space height="20px" />
-                    <a className={cl.lost_password_link}>{LanguageManager.get("auth.lost-password-link")}</a>
+                    <a className={cl.lost_password_link} href="/reset-password">{LanguageManager.get("auth.lost-password-link")}</a>
                 </div>
                 <div className={cl.line}></div>
                 <div className={cl.sign_in_panel}>

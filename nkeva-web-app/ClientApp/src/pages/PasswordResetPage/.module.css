@@ -1,0 +1,113 @@
+.main {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.front {
+    background-color: #171717;
+    padding: 30px;
+    border-radius: 10px;
+    width: 510px;
+}
+
+.reset_password_description {
+    color: white;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.info_header {
+    color: white;
+}
+
+.email_input {
+    width: calc(100% - 15px);
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(217, 217, 217, 0.00);
+    color: white;
+    padding-left: 10px;
+    padding-right: 3px;
+    padding-block: 12px;
+    font-size: 1.171875rem;
+}
+
+.search_email_button {
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(10, 93, 255, 0.49);
+    padding: 12px;
+    word-wrap: break-word;
+}
+
+.search_email_button_text {
+    user-select: none;
+    color: #AAA;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+}
+
+.ok_button {
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(10, 93, 255, 0.49);
+    padding: 12px;
+    word-wrap: break-word;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.ok_button_text {
+    user-select: none;
+    color: #AAA;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+}
+
+.password_input, .password_repeat_input {
+    width: calc(100% - 15px);
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: #2D313C;
+    color: white;
+    padding-left: 10px;
+    padding-right: 3px;
+    padding-block: 12px;
+    font-size: 1.171875rem;
+}
+
+.set_password_button {
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10px;
+    border: 1px solid #565656;
+    background: rgba(10, 93, 255, 0.49);
+    padding: 12px;
+    word-wrap: break-word;
+}
+
+.set_password_button_text {
+    user-select: none;
+    color: #AAA;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+}

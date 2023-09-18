@@ -4,6 +4,7 @@ import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 import LayoutMenu from "./components/LayoutMenu/LayoutMenu";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import { AuthAPI } from "./services/api/auth";
+import PasswordResetPage from "./pages/PasswordResetPage/PasswordResetPage";
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route index element={<AuthorizationPage />} />
+                <Route path="reset-password" element={<PasswordResetPage />} />
                 <Route path="account" element={<LayoutMenu />}>
                     <Route index element={<AccountPage />} />
                     <Route path="courses" element={<></>} />
